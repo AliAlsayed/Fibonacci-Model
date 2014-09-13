@@ -10,60 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var selectedValueLabel: UILabel?
-    var outputTextView: UITextView?
-    var theSlider: UISlider?
+   
+    @IBOutlet var theSlider: UISlider!
+    
+    @IBOutlet weak var selectedValueLabel: UILabel!
+    
+    @IBOutlet weak var outputTextView: UITextView!
     
     var fibo: FibonacciModel = FibonacciModel()
-                            
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-     self.addASlider()
-        
-        
-
-        
-    }
     
-   
+    @IBAction func sliderValueDidChange(sender: AnyObject) {
     
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-    }
-    
-    func addASlider(){
-    
-    self.theSlider = UISlider(frame: CGRectMake(60, 244, 200, 20))
-    self.view.addSubview(theSlider)
-    
-    self.theSlider!.minimumValue = 2
-    self.theSlider!.maximumValue = 50
-    
-    var minLabel = UILabel(frame: CGRectMake(235, 205, 40, 40))
-    minLabel.text = String (Int(theSlider!.maximumValue))
-    self.view.addSubview(minLabel)
-    
-    self.selectedValueLabel = UILabel(frame: CGRectMake(140, 320, 40, 40))
-    self.selectedValueLabel!.text = String(Int(theSlider!.value))
-    self.view.addSubview(selectedValueLabel)
-    
-    self.outputTextView = UITextView(frame: CGRectMake(20, 350, 300, 140))
-    self.view.addSubview(self.outputTextView)
-    
-    self.theSlider!.addTarget(self, action: "sliderValueDidChange", forControlEvents: UIControlEvents.ValueChanged)
-
-    
-
-}
-
-    func sliderValueDidChange () {
-        
         var returnedArray: [Int] = []
         var formattedOutput:String = ""
         
